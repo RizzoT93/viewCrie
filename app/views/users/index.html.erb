@@ -1,0 +1,22 @@
+<p style="color: green"><%= notice %></p>
+
+<h1>Users</h1>
+<%= form_with url: users_path, method: :get, class: "d-flex" do %>
+      <%= text_field_tag :query,
+        params[:query],
+        placeholder: "I want to find..."
+      %>
+      <%= button_tag type: 'submit' do %>
+        <i >Search</i>
+      <% end %>
+    <% end %>
+<div id="users">
+  <% @users.each do |user| %>
+    <%= render user %>
+    <p>
+      <%= link_to "Show this user", user %>
+    </p>
+  <% end %>
+</div>
+
+<%= link_to "New user", new_user_path %>
